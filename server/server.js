@@ -39,6 +39,22 @@ app.get("/", (request, response) => {
 
 //POST endpoint --> receive the body from client and INSERT the body into the database
 
+// Now to insert into the client from the database
+app.post("/runningPosts", async (request, response) => {
+  const { date, duration, distance, pace, notes } = request.body;
+
+  try {
+    await db.query(
+      `INSERT into running_posts (date,duration,distance,pace,notes) VALUES ($1, $2, $3, $4, $5)`,
+      [date, duration, distance, pace, notes]
+    );
+    response.status(200).json({ success: true });
+  } catch (error) {
+    console.log("Insert not working", error);
+    response.status(500).json({ success: false });
+  }
+});
+
 //Todo Stretch goals: UPDATE and DELETE endpoints
 
 //PUT / Update endpoint
