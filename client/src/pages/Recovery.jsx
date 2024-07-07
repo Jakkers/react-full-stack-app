@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/Training.css";
 
 // here I will fetch the posts from the server, which is getting the posts from the database
 
@@ -23,19 +24,21 @@ export default function Recovery() {
   //DECISION: you can have a seperate function to get the posts, and call the function in the useEffect hook or you can write the function directly inside useEffect
   return (
     <>
+      <h2>Recovery</h2>
       <div className="posts-container">
         {items.map((item) => (
-          <div className="personal-best-container" key={item.id}>
-            <p>{item.personal_best}</p>
-          </div>
-        ))}
-        {items.map((item) => (
           <div className="posts-data" key={item.id}>
-            <p>{item.formated_date}</p>
-            <p>{item.distance}</p>
-            <p>{item.duration}</p>
-            <p>{item.pace}</p>
-            <p>{item.notes}</p>
+            <div className="run-date">
+              <p>Date of run: {item.formated_date}</p>
+            </div>
+            <div className="running-data">
+              <p>Distance: {item.distance} Miles</p>
+              <p>Duration: {item.duration}</p>
+              <p>Pace: {item.pace} Miles per min</p>
+            </div>
+            <div>
+              <p className="training-notes">Notes: {item.notes}</p>
+            </div>
           </div>
         ))}
       </div>

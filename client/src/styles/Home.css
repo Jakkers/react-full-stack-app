@@ -1,0 +1,13 @@
+.personal-best-time {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.personal-best-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 1px white;
+  border-radius: 15px;
+  height: 80vh;
+}

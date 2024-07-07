@@ -1,8 +1,46 @@
 :root {
-  max-width: 1280px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   display: flex;
   justify-content: center;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+button {
+  background-color: #747bff;
+  border: solid 2px transparent;
+  border-radius: 20px;
+  height: 40px;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #f9f9f9;
+  border: solid 2px #747bff;
+  color: #747bff;
+  border-radius: 20px;
+  height: 40px;
+  margin-top: 15px;
 }

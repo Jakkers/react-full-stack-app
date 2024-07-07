@@ -11,6 +11,7 @@
 //the Link componenet has an attribute calles to="" to specify the params we are navigating to
 
 import { useState, useEffect } from "react";
+import "../styles/Home.css";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -27,12 +28,14 @@ export default function Home() {
   }, []);
   return (
     <>
-      <h1>HOME</h1>
       <div className="personal-best-container">
-        <h2>Personal best:</h2>
+        <h2>Personal best pace</h2>
         {items.map((item) => (
           <div className="personal-best-data" key={item.id}>
-            <p key={item.id}>{item.pace}</p>
+            <p className="personal-best-time" key={item.id}>
+              {item.pace}
+            </p>
+            <p>Mins per mile</p>
           </div>
         ))}
       </div>

@@ -10,12 +10,14 @@ function App() {
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/training" element={<Training />} />
-        <Route path="/form" element={<Form />} />
-        <Route path="/recovery" element={<Recovery />} />
-      </Routes>
+      <section className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/recovery" element={<Recovery />} />
+        </Routes>
+      </section>
     </>
   );
 }

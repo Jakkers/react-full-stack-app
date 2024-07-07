@@ -1,0 +1,25 @@
+.posts-data {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.running-data {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.training-notes {
+  text-align: left;
+}
+
+.run-date {
+  text-align: left;
+  font-weight: bold;
+}
