@@ -19,7 +19,9 @@ export default function Home() {
   //fetching api data
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:8080/personalBest");
+      const response = await fetch(
+        "https://react-full-stack-app-server.onrender.com/personalBest"
+      );
       const data = await response.json();
       setItems(data.rows);
       console.log(data.rows);

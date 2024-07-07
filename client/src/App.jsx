@@ -5,6 +5,7 @@ import Training from "./pages/Training";
 import Home from "./pages/Home";
 import Recovery from "./pages/Recovery";
 import { Routes, Route } from "react-router-dom";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/form" element={<Form />} />
           <Route path="/recovery" element={<Recovery />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </section>
     </>

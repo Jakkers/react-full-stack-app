@@ -22,7 +22,7 @@ export default function Form() {
     e.preventDefault();
     console.log("the form values are:", formValues);
 
-    fetch("http://localhost:8080/runningPosts", {
+    fetch("https://react-full-stack-app-server.onrender.com/runningPosts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
