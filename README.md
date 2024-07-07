@@ -16,15 +16,15 @@ Server: https://react-full-stack-app-server.onrender.com
 
 ## Wireframes
 
-![Wireframe of workout tracker app](./public/assets/planning_wireframe.jpg)
+![Wireframe of workout tracker app](./client/public/assets/planning_wireframe.jpg)
 
 ## SQL Tables
 
-![SQL tables drawn in drawSQL](./public/assets/SQL-table.png)
+![SQL tables drawn in drawSQL](./client/public/assets/SQL-table.png)
 
 ## Component Tree
 
-![React component tree](./public/assets/component-tree.png)
+![React component tree](./client/public/assets/component-tree.png)
 
 # Reflections
 
