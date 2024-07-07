@@ -6,10 +6,9 @@ export default function Form() {
   //we need state to save the formData
 
   const [formValues, setFormValues] = useState({
-    username: "",
     date: "",
     duration: "",
-    distance: "",
+    distance: 0.0,
     pace: "",
     notes: "",
     category: "",
@@ -21,13 +20,23 @@ export default function Form() {
   //this function controls the onSubmit event
   function handleSubmit(e) {
     e.preventDefault();
+    console.log("the form values are:", formValues);
 
-    fetch("https://react-full-stack-app-server.onrender.com", {
+    fetch("http://localhost:8080/runningPosts", {
       method: "POST",
       headers: {
-        "content/type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formValues),
+    });
+    //method to reset the form after submission
+    setFormValues({
+      date: "",
+      duration: "",
+      distance: 0.0,
+      pace: "",
+      notes: "",
+      category: "",
     });
   }
 
@@ -35,32 +44,30 @@ export default function Form() {
   //something that fetches the POST element
 
   //a function to handle the change of the user input
-  //? function handleChange() {
+  function handleInputChange(event) {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  }
+
   //we need to add the values from te initial state
   //we need to set the properties for the new object
   //the key is the target name; the target is the target value
-  //? }
   return (
     <div className="form-container">
       Form
       <form onSubmit={handleSubmit} className="form-style">
-        <label
-          name="username"
-          htmlFor="username"
-          className="username"
-          id="username"
-        >
-          Name
-        </label>
-        <input name="username" type="text" id="username" />
-        <label name="username" htmlFor="date" id="date">
-          Date
-        </label>
-        <input name="date" type="date" id="date" />
-        <label name="date" htmlFor="duration" id="duration">
-          Duration (HH:MM:SS)
-        </label>
+        <label htmlFor="date">Date</label>
         <input
+          value={formValues.date}
+          onChange={handleInputChange}
+          name="date"
+          type="date"
+          id="date"
+          pattern="\d{4}-\d{2}-\d{2}"
+        />
+        <label htmlFor="duration">Duration (HH:MM:SS)</label>
+        <input
+          value={formValues.duration}
+          onChange={handleInputChange}
           name="duration"
           id="duration"
           placeholder="HH:MM:SS"
@@ -68,20 +75,20 @@ export default function Form() {
           // using regex to specify required characters
           pattern="^[0-9]{2}:[0-9]{2}:[0-9]{2}"
         />
-        <label name="duration" htmlFor="distance" id="distance">
-          Distance (mi)
-        </label>
+        <label htmlFor="distance">Distance (mi)</label>
         <input
+          value={formValues.distance}
+          onChange={handleInputChange}
           name="distance"
           type="number"
           id="distance"
           placeholder="Miles"
           step=".01"
         />
-        <label name="pace" htmlFor="pace" id="pace" required>
-          Pace (MM:SS)
-        </label>
+        <label htmlFor="pace">Pace (MM:SS)</label>
         <input
+          value={formValues.pace}
+          onChange={handleInputChange}
           name="pace"
           type="text"
           id="pace"
@@ -89,15 +96,26 @@ export default function Form() {
           // using regex to specify required characters
           pattern="^[0-9]{2}:[0-9]{2}"
         />
-        <label name="notes" htmlFor="notes" id="notes">
-          Notes
-        </label>
-        <textarea name="notes" id="notes" rows={5}></textarea>
-        <select name="category" id="category">
-          <option value="training">Training</option>
-          <option value="recovery">Recovery</option>
+        <label htmlFor="notes">Notes</label>
+        <textarea
+          value={formValues.notes}
+          onChange={handleInputChange}
+          name="notes"
+          id="notes"
+          rows={5}
+        ></textarea>
+        <label htmlFor="category">Choose a workout type:</label>
+        <select
+          onChange={handleInputChange}
+          name="category"
+          id="category"
+          required
+        >
+          <option value="">Select from the list</option>
+          <option value="24">Training</option>
+          <option value="25">Recovery</option>
         </select>
-        <button name="submit" type="submit" id="submit">
+        <button type="submit" id="submit">
           Submit
         </button>
       </form>
@@ -107,3 +125,5 @@ The name attribute in your input should be the same as the database where you ar
     </div>
   );
 }
+
+console.log(Form);

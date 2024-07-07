@@ -36,17 +36,64 @@ app.get("/", (request, response) => {
 });
 
 //GET endpoint --> SELECT data from database
+// get endpoint for training page and data
+app.get("/training", async (_, response) => {
+  const dbData = await db.query(
+    `SELECT
+id,
+to_char(date, 'DD Mon YYYY')
+AS formated_date,
+duration,
+distance,
+pace,
+notes
+FROM running_posts WHERE category_id = 24`
+  );
+  console.log(dbData);
+  response.json(dbData);
+});
+
+// get endpoint for personal best
+app.get("/personalBest", async (_, response) => {
+  const dbData = await db.query(
+    `SELECT 
+  MIN(pace) pace
+FROM 
+  running_posts 
+ORDER BY 
+  pace;`
+  );
+  console.log(dbData);
+  response.json(dbData);
+});
+
+// get endpoint for recovery page and data
+app.get("/recovery", async (_, response) => {
+  const dbData = await db.query(
+    `SELECT
+id,
+to_char(date, 'DD Mon YYYY')
+AS formated_date,
+duration,
+distance,
+pace,
+notes
+FROM running_posts WHERE category_id = 25`
+  );
+  console.log(dbData);
+  response.json(dbData);
+});
 
 //POST endpoint --> receive the body from client and INSERT the body into the database
 
 // Now to insert into the client from the database
 app.post("/runningPosts", async (request, response) => {
-  const { date, duration, distance, pace, notes } = request.body;
-
+  const { date, duration, distance, pace, notes, category } = request.body;
+  console.log(request.body);
   try {
     await db.query(
-      `INSERT into running_posts (date,duration,distance,pace,notes) VALUES ($1, $2, $3, $4, $5)`,
-      [date, duration, distance, pace, notes]
+      `INSERT into running_posts (date,duration,distance,pace,notes,category_id) VALUES ($1, $2, $3, $4, $5, $6)`,
+      [date, duration, distance, pace, notes, category]
     );
     response.status(200).json({ success: true });
   } catch (error) {
