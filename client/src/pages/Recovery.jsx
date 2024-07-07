@@ -7,6 +7,7 @@ export default function Recovery() {
   //we need state to save the values of posts
   // we need useEffect to fetch data
   const [items, setItems] = useState([]);
+  const [msgDelete, setMsgDelete] = useState(false);
 
   //fetching api data
   useEffect(() => {
@@ -32,7 +33,32 @@ export default function Recovery() {
           <div className="posts-data" key={item.id}>
             <div className="run-date">
               <p className="date-of-run">Date of run: {item.formated_date}</p>
-              <button className="delete-button">❌</button>
+              <button
+                onClick={async function deleteMsg() {
+                  const response = await fetch(
+                    //?gotta use back ticks to allow input of dynamic url (I think...)
+                    `https://react-full-stack-app-server.onrender.com/deleteFormData/${item.id}` ||
+                      `http://localhost:8080/deleteFormData/${item.id}`,
+                    {
+                      method: "DELETE",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  );
+                  const data = await response.json();
+                  if (data.success) {
+                    setMsgDelete(!msgDelete);
+                  }
+                  //? Needed this if statement to make the delete instantaneous
+                  if (msgDelete) {
+                    return null;
+                  }
+                }}
+                className="delete-button"
+              >
+                ❌
+              </button>
             </div>
             <div className="running-data">
               <p>Distance: {item.distance} Miles</p>
