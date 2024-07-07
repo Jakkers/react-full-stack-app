@@ -17,7 +17,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/form" element={<Form />} />
           <Route path="/recovery" element={<Recovery />} />
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </section>
     </>

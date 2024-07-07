@@ -5,9 +5,8 @@ export default function Nav() {
   return (
     <header>
       <nav className="nav-bar">
-        <Link to="/">Home</Link> | <Link to="/training">Training</Link> |{" "}
-        <Link to="/recovery">Recovery</Link> |{" "}
-        <Link to="/form">Add Workout</Link>
+        <Link to="/">🏆</Link> | <Link to="/training">⌛️</Link> |{" "}
+        <Link to="/recovery">😌</Link> | <Link to="/form">+</Link>
       </nav>
     </header>
   );
