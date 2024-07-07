@@ -9,5 +9,18 @@
   justify-content: center;
   border: solid 1px white;
   border-radius: 15px;
-  height: 80vh;
+  height: 70vh;
+  width: 750px;
+}
+
+@media (width <= 900px) {
+  .personal-best-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px white;
+    border-radius: 15px;
+    height: 70vh;
+    width: 85vw;
+  }
 }

@@ -3,10 +3,21 @@
   flex-direction: column;
   text-align: left;
   gap: 0.75em;
+  width: 750px;
 }
 
 .form-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+@media (width <= 900px) {
+  .form-style {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.75em;
+    width: 85vw;
+  }
 }

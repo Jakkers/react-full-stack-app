@@ -53,7 +53,7 @@ export default function Form() {
   //the key is the target name; the target is the target value
   return (
     <div className="form-container">
-      <h2>Add Workout</h2>
+      <h2>Add Run Workout</h2>
       <form onSubmit={handleSubmit} className="form-style">
         <label htmlFor="date">Date</label>
         <input
@@ -115,7 +115,7 @@ export default function Form() {
           <option value="24">Training</option>
           <option value="25">Recovery</option>
         </select>
-        <button type="submit" id="submit">
+        <button className="submit-button" type="submit" id="submit">
           Submit
         </button>
       </form>

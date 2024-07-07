@@ -26,12 +26,13 @@ export default function Recovery() {
   //DECISION: you can have a seperate function to get the posts, and call the function in the useEffect hook or you can write the function directly inside useEffect
   return (
     <>
-      <h2>Recovery</h2>
+      <h2>Recovery Runs</h2>
       <div className="posts-container">
         {items.map((item) => (
           <div className="posts-data" key={item.id}>
             <div className="run-date">
-              <p>Date of run: {item.formated_date}</p>
+              <p className="date-of-run">Date of run: {item.formated_date}</p>
+              <button className="delete-button">❌</button>
             </div>
             <div className="running-data">
               <p>Distance: {item.distance} Miles</p>

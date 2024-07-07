@@ -1,7 +1,23 @@
 .posts-data {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border: solid 2px #f9f9f9;
+  border-radius: 15px;
+  padding: 20px;
+  width: 750px;
+}
+
+@media (width <= 900px) {
+  .posts-data {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: solid 2px #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    width: 85vw;
+  }
 }
 
 .posts-container {
@@ -15,6 +31,16 @@
   gap: 1em;
 }
 
+.date-of-run {
+  display: flex;
+  flex-basis: 80ch;
+}
+
+.run-date {
+  display: flex;
+  flex-direction: row;
+}
+
 .training-notes {
   text-align: left;
 }
@@ -22,4 +48,27 @@
 .run-date {
   text-align: left;
   font-weight: bold;
+}
+
+.delete-button {
+  background: transparent;
+  border-radius: 30px;
+  border: solid 2px transparent;
+  width: 45px;
+  height: 45px;
+}
+
+.delete-button:hover {
+  border-radius: 20px;
+  border: solid 2px red;
+  width: 45px;
+  height: 45px;
+}
+
+.delete-button:active {
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  border: solid 2px red;
+  width: 45px;
+  height: 45px;
 }

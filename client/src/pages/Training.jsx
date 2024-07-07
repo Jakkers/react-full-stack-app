@@ -24,14 +24,42 @@ export default function Training() {
   //this fucntion is async and uses fetch
   //once you fetch the data, you will set the state variable to be the posts data
   //DECISION: you can have a seperate function to get the posts, and call the function in the useEffect hook or you can write the function directly inside useEffect
+  const [msgDelete, setMsgDelete] = useState(false);
+
   return (
     <>
-      <h2>Training</h2>
+      <h2>Training Runs</h2>
       <div className="posts-container">
         {items.map((item) => (
-          <div className="posts-data" key={item.id}>
+          <div className="posts-data" key={item.id} id={item.id}>
             <div className="run-date">
-              <p>Date of run: {item.formated_date}</p>
+              <p className="date-of-run">Date of run: {item.formated_date}</p>
+              <button
+                onClick={async function deleteMsg() {
+                  const response = await fetch(
+                    //?gotta use back ticks to allow input of dynamic url (I think...)
+                    `https://react-full-stack-app-server.onrender.com/deleteFormData/${item.id}` ||
+                      `http://localhost:8080/deleteFormData/${item.id}`,
+                    {
+                      method: "DELETE",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  );
+                  const data = await response.json();
+                  if (data.success) {
+                    setMsgDelete(!msgDelete);
+                  }
+                  //? Needed this if statement to make the delete instantaneous
+                  if (msgDelete) {
+                    return null;
+                  }
+                }}
+                className="delete-button"
+              >
+                ❌
+              </button>
             </div>
             <div className="running-data">
               <p>Distance: {item.distance} Miles</p>

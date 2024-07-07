@@ -13,6 +13,7 @@
 
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -28,7 +29,7 @@
   }
 }
 
-button {
+.submit-button {
   background-color: #747bff;
   border: solid 2px transparent;
   border-radius: 20px;
@@ -36,7 +37,7 @@ button {
   margin-top: 15px;
 }
 
-button:hover {
+.submit-button:hover {
   background-color: #f9f9f9;
   border: solid 2px #747bff;
   color: #747bff;

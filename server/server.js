@@ -119,8 +119,8 @@ app.put("/updateFormData/:id", async (request, response) => {
 app.delete("/deleteFormData/:id", async (request, response) => {
   const dataId = request.params.id;
   const result = await db.query(
-    `DELETE FROM table_name WHERE id = $1 RETURNING *`,
+    `DELETE FROM running_posts WHERE id = $1 RETURNING *`,
     [dataId]
   );
-  response.json(result.rows);
+  response.json({ success: true });
 });

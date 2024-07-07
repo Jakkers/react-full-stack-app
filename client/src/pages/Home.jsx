@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <div className="personal-best-container">
-        <h2>Personal best pace</h2>
+        <h2>Personal Best Pace</h2>
         {items.map((item) => (
           <div className="personal-best-data" key={item.id}>
             <p className="personal-best-time" key={item.id}>

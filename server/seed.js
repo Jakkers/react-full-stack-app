@@ -5,10 +5,12 @@ import { db } from "./server.js";
 db.query(`CREATE TABLE IF NOT EXISTS running_posts(
     id SERIAL PRIMARY KEY,
     date DATE,
-    duration INTERVAL,
+    duration TEXT,
     distance DECIMAL,
-    pace INTERVAL,
-    notes TEXT
+    pace TEXT,
+    notes TEXT,
+category_id INT REFERENCES categories (id),
+user_id INT REFERENCES users (id)
 );`);
 
 db.query(`CREATE TABLE IF NOT EXISTS users(
