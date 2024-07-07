@@ -20,10 +20,7 @@ export default function Training() {
     }
     fetchData();
   }, []);
-  //we need a function to get the posts
-  //this fucntion is async and uses fetch
-  //once you fetch the data, you will set the state variable to be the posts data
-  //DECISION: you can have a seperate function to get the posts, and call the function in the useEffect hook or you can write the function directly inside useEffect
+
   const [msgDelete, setMsgDelete] = useState(false);
 
   return (
@@ -35,27 +32,30 @@ export default function Training() {
             <div className="run-date">
               <p className="date-of-run">Date of run: {item.formated_date}</p>
               <button
-                onClick={async function deleteMsg() {
-                  const response = await fetch(
-                    //?gotta use back ticks to allow input of dynamic url (I think...)
-                    `https://react-full-stack-app-server.onrender.com/deleteFormData/${item.id}` ||
-                      `http://localhost:8080/deleteFormData/${item.id}`,
-                    {
-                      method: "DELETE",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
+                onClick={
+                  //function to delete post from database and update page
+                  async function deleteMsg() {
+                    const response = await fetch(
+                      // setting dynamic urls using mapped properties
+                      `https://react-full-stack-app-server.onrender.com/deleteFormData/${item.id}` ||
+                        `http://localhost:8080/deleteFormData/${item.id}`,
+                      {
+                        method: "DELETE",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                      }
+                    );
+                    const data = await response.json();
+                    if (data.success) {
+                      setMsgDelete(!msgDelete);
                     }
-                  );
-                  const data = await response.json();
-                  if (data.success) {
-                    setMsgDelete(!msgDelete);
+                    // do the delete is instant
+                    if (msgDelete) {
+                      return null;
+                    }
                   }
-                  //? Needed this if statement to make the delete instantaneous
-                  if (msgDelete) {
-                    return null;
-                  }
-                }}
+                }
                 className="delete-button"
               >
                 ❌
@@ -72,8 +72,6 @@ export default function Training() {
           </div>
         ))}
       </div>
-      {/* I want to see a lists of posts */}
-      {/* conditional rendering idea: can have a list of titles and the user clicks on them to see the full post (will need an extra state to acheive this) */}
     </>
   );
 }

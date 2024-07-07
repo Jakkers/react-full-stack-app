@@ -34,9 +34,7 @@ export default function Home() {
         <h2>Personal Best Pace</h2>
         {items.map((item) => (
           <div className="personal-best-data" key={item.id}>
-            <p className="personal-best-time" key={item.id}>
-              {item.pace}
-            </p>
+            <p className="personal-best-time">{item.pace}</p>
             <p>Mins per mile</p>
           </div>
         ))}
